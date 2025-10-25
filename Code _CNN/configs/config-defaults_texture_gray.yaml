@@ -1,0 +1,63 @@
+num_runs:
+  value: 1
+epochs:
+  value: 200
+lr:
+  value: 0.0005
+model:
+  value: texture
+model_class:
+  value: deeplabv3resnet18
+input_channels:
+  value: 1
+reset_weights:
+  value: True
+uniform_init:
+  value: False
+num_classes:
+  value: 19
+generate_train_ids_from_labels:
+  value: False
+dataset_name:
+  value: 'CityscapesTexture2'
+split:
+  value: 'train_testsplit_cityscapes_val_randomly_sampled_from_sc_train_extra'
+transform_train:
+  value: {"random_crop": [512, 512],
+          "to_tensor": True, # irrelevant. This is ignored by the code and toTensor is always done for images
+          "normalization_mean": [0.2955], #TODO adapt
+          "normalization_var": [0.2102]}
+dataset_train_root:
+  value: '/home/xxx/texture-voronoi-diagrams/Voronoi_2023_07_31_on_2023_03_03_upsampled_texture_images_in_contour'
+dataset_label_root:
+  value: '/home/xxx/texture-voronoi-diagrams/Voronoi_2023_07_31_on_2023_03_03_upsampled_texture_images_in_contour_label'
+dataset_test_root:
+  value: '/home/xxx/texture-voronoi-diagrams/Voronoi_2023_07_31_on_2023_07_31_upsampled_texture_images_in_contour'
+dataset_test_label_root:
+  value: '/home/xxx/texture-voronoi-diagrams/Voronoi_2023_07_31_on_2023_07_31_upsampled_texture_images_in_contour_label'
+transform_test_split:
+  value: {"to_tensor": True, #irrelevant. This is ignored by the code and toTensor is always done for images
+          "normalization_mean": [0.2955],
+          "normalization_var": [0.2102]}
+batch_size:
+  value: 30
+batch_size_test:
+  value: 10
+num_workers:
+  value: 4
+weights:
+  value: []
+lr_policy:
+  value: 'linear'
+ckpt_path:
+  value: null
+dump_pred:
+  value: True
+seed:
+  value: 42
+log_freq:
+  value: 2975
+optim:
+  value: "Adam"
+log_images:
+  value: True

@@ -1,0 +1,97 @@
+num_runs:
+  value: 1
+epochs:
+  value: 75
+lr:
+  value: 0.0005
+loss:
+  value: NLLLoss # CrossEntropyLoss
+eps:
+  value: 0.000000000000000000000000000000000000000000001  # 10^(-45) smallest power before torch.log gets inf
+deeplab_backbone: 
+  value: deeplabv3resnet_2layer
+model_class:
+  value: fusion
+input_channels:
+  value: 38 #number of experts * number of channels
+reset_weights:
+  value: True
+uniform_init:
+  value: True 
+num_classes:
+  value: 19
+generate_train_ids_from_train_labels:
+  value: False
+generate_train_ids_from_split_labels:
+  value: True
+dataset_name:
+  value: 'CityscapesFusionSoftmax19classes'
+split:
+  value: 'train_testsplit_cityscapes_val_randomly_sampled_from_sc_train_extra'
+transform_train:
+  value: {"random_crop": [256, 256]}
+dataset_label_root:
+  value: '/home/datasets/Cityscapes'
+dataset_test_label_root:
+  value: '/home/xxx/data/'
+transform_test_split:
+  value: {}
+batch_size:
+  value: 16
+batch_size_test:
+  value: 4
+num_workers:
+  value: 8
+weights:
+  value: []
+lr_policy:
+  value: 'linear'     # 'identity'
+dump_pred:
+  value: True
+seed:
+  value: 42
+log_freq:
+  value: 2975
+optim:
+  value: "Adam"
+expert_dicts:
+  value: [
+            {"expert_type": texture_colored,
+            "model_class": "deeplabv3resnet18",
+            "softmax_path": "data/softmax/texture_colored_CS19_deeplabv3resnet18_512x512_cs_extra_train_val_36uw431c_2023_09_06/161/Cityscapes",
+            "num_classes": 19,
+            "softmax_transform": {
+                                  "normalization_mean": [    0.4127309,     0.0460966,     0.1972479,     0.0090963,
+                                                             0.0614248,     0.0117656,     0.0011673,     0.0066352,
+                                                             0.1275346,     0.0050273,     0.0359360,     0.0099733,
+                                                             0.0015958,     0.0608372,     0.0018239,     0.0013836,
+                                                             0.0014249,     0.0003258,     0.0079794],
+
+                                  "normalization_var": [0.4765724, 0.1647452, 0.3322418, 0.0377043, 0.1559567, 0.0593846,
+                                                        0.0150794, 0.0510134, 0.2655180, 0.0320822, 0.1508082, 0.0538483,
+                                                        0.0144647, 0.1856583, 0.0117185, 0.0075018, 0.0053199, 0.0034072,
+                                                        0.0466122]
+                    }
+          },
+            {"expert_type": anisodiff,
+            "model_class": "deeplabv3resnet18",
+            "softmax_path": "data/softmax/contour_anisodiff_CS19_deeplabv3resnet18_512x512_pseudoVal_1gpag6aw_2023_09_15/196/Cityscapes/",
+             "num_classes": 19,
+            "softmax_transform": {
+                                  "normalization_mean": [0.4088935, 0.0103979, 0.2403387, 0.0068888,
+                                                         0.0353997, 0.0000924, 0.0003775, 0.0009531,
+                                                         0.1217313, 0.0149821, 0.0273380, 0.0007492,
+                                                         0.0000685, 0.0357671, 0.0304586, 0.0464466,
+                                                         0.0126945, 0.0002257, 0.0062040],
+                                  "normalization_var": [0.4595941, 0.0398623, 0.3437814, 0.0290190,
+                                                        0.1013082, 0.0006615, 0.0032343, 0.0090546,
+                                                        0.2364252, 0.0554953, 0.1167346, 0.0037226,
+                                                        0.0004566, 0.1090197, 0.0895694, 0.1260094,
+                                                        0.0437872, 0.0012959, 0.0274537]
+                    }
+          }
+        ]
+ckpt_path:
+  value: null
+blend:
+  value: False
