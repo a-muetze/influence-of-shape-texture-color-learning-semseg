@@ -1,4 +1,4 @@
-# influence-of-shape-texture-color-learning-semseg
+# On the influence of shape, texture and color for learning semantic segmentation
 Official repository of the Paper "On the Influence of Shape, Texture and Color for Learning Semantic Segmentation"
 
 The code includes the cue decomposition procedures, our python configurations and dataset splits.
